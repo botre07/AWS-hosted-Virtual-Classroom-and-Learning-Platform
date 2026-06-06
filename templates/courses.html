@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Courses</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    >
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <h2 class="logo">
+            Virtual Classroom
+        </h2>
+
+        <ul>
+
+            <li>
+                <a href="/dashboard">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="/courses">
+                    <i class="fa-solid fa-book"></i>
+                    Courses
+                </a>
+            </li>
+
+            <li>
+                <a href="/assignments">
+                    <i class="fa-solid fa-file"></i>
+                    Assignments
+                </a>
+            </li>
+
+            <li>
+                <a href="/certificates">
+                    <i class="fa-solid fa-award"></i>
+                    Certificates
+                </a>
+            </li>
+
+            <li>
+                <a href="/profile">
+                    <i class="fa-solid fa-user"></i>
+                    Profile
+                </a>
+            </li>
+
+            <li>
+                <a href="/logout">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logout
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+
+    <div class="main-content">
+
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+
+            <h3>
+                Explore Courses 🚀
+            </h3>
+
+            <input
+                type="text"
+                placeholder="Search courses..."
+                class="search-bar"
+            >
+
+        </div>
+
+        <!-- WELCOME -->
+
+        <div class="welcome-banner">
+
+            <h1>
+                Learn New Skills
+            </h1>
+
+            <p>
+                Upgrade your career with premium courses.
+            </p>
+
+        </div>
+
+        <!-- COURSE GRID -->
+
+        <div class="course-grid">
+
+            {% for course in courses %}
+
+            <div class="course-card">
+
+                <!-- IMAGE -->
+
+                <img
+                    src="{{ course.image }}"
+                    alt="Course Image"
+                >
+
+                <!-- CONTENT -->
+
+                <div class="course-content">
+
+                    <!-- BADGE -->
+
+                    <span class="badge">
+
+                        {{ course.badge }}
+
+                    </span>
+
+                    <!-- TITLE -->
+
+                    <h3>
+
+                        {{ course.title }}
+
+                    </h3>
+
+                    <!-- DESCRIPTION -->
+
+                    <p>
+
+                        {{ course.description }}
+
+                    </p>
+
+                    <!-- COURSE INFO -->
+
+                    <div class="course-info">
+
+                        <span>
+
+                            <i class="fa-solid fa-clock"></i>
+
+                            12 Hours
+
+                        </span>
+
+                        <span>
+
+                            <i class="fa-solid fa-star"></i>
+
+                            4.8
+
+                        </span>
+
+                    </div>
+
+                    <!-- BUTTON -->
+
+                    <a
+                        href="/enroll/{{ course.link }}"
+                        class="enroll-btn"
+                    >
+
+                        Start Learning
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+<!-- <div class="footer">
+    © 2026 Virtual Classroom | Developed by sanchita
+</div> -->
+</html>
